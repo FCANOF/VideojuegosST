@@ -1,3 +1,4 @@
+"""Videojuego: PACMAN"""
 from random import choice
 from turtle import *
 from freegames import floor, vector
@@ -72,8 +73,8 @@ def valid(point):
 
 def world():
     "Draw world using path."
-    bgcolor('black')
-    path.color('blue')
+    bgcolor('DarkOrchid4')
+    path.color('pale green')
 
     for index in range(len(tiles)):
         tile = tiles[index]
@@ -86,7 +87,7 @@ def world():
             if tile == 1:
                 path.up()
                 path.goto(x + 10, y + 10)
-                path.dot(2, 'white')
+                path.dot(5, 'black')
 
 def move():
     "Move pacman and all ghosts."
@@ -109,7 +110,7 @@ def move():
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'yellow')
+    dot(20, 'gold2')
 
     for point, course in ghosts:
         if valid(point + course):
