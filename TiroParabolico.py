@@ -52,10 +52,14 @@ def move():
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
-
     draw()
+
+    for target in targets:
+        if not inside(target):
+            target.x= 190
     
-    ontimer(move, 50)
+
+    ontimer(move, 20)
     return
 
 setup(420, 420, 370, 0)
