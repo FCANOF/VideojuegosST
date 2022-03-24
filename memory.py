@@ -4,7 +4,7 @@ from freegames import path
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
-state = {'mark': None, 'num_tap': 0}
+state = {'mark': None, 'num_tap': 0, 'num_par':0}
 hide = [True] * 64
 
 def square(x, y):
@@ -39,6 +39,11 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        state['num_par'] += 1
+        if state['num_par'] == 32:
+            print('JUEGO TERMINADO')
+        else:
+            print('Llevas ', state['num_par'], ' pares')
 
 def draw():
     "Draw image and tiles."
@@ -57,7 +62,12 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        if tiles[mark] <= 9 :
+            goto(x + 15, y)
+        elif tiles[mark] >= 10 and tiles[mark] <= 19 :
+            goto(x + 3, y)
+        else:
+            goto(x + 4, y)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
