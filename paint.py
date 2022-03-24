@@ -1,12 +1,12 @@
-rom turtle import *
+from turtle import *
 from freegames import vector
 
 def line(start, end):
     "Draw line from start to end."
-    up()
-    goto(start.x, start.y)
-    down()
-    goto(end.x, end.y)
+    up()                   #Pull the pen up  - no drawing when moving
+    goto(start.x, start.y) #Move the pen in order of the 2 coordinates (x, y)
+    down()                 #Pull the pen down - drawing when moving
+    goto(end.x, end.y)     #Move the pen in order of the 2 coordinates (x, y)
 
 def square(start, end):
     "Draw square from start to end."
@@ -27,11 +27,33 @@ def circle(start, end):
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
-    pass  # TODO
+    "pass  # TODO"
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(2):
+        forward(end.x - start.x - start.x)
+        left(90)
+        forward(end.x - start.x)
+        left(90)
+
+    end_fill()
 
 def triangle(start, end):
     "Draw triangle from start to end."
-    pass  # TODO
+    "pass  # TODO"
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(3):
+        forward(end.x - start.x)
+        left(120)
+
+    end_fill()
 
 def tap(x, y):
     "Store starting point or draw shape."
@@ -59,6 +81,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('purple'), 'P')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
