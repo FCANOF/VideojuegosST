@@ -92,7 +92,12 @@ def triangle(start, end):
     end_fill()
 
 def tap(x, y):
-    "Store starting point or draw shape."
+    """Store starting point or draw shape.
+
+    Args:
+        x (int): Coordenate (pixels) in x of the tap in the field.
+        y (int): Coordenate (pixels) in y of the tap in the field.
+    """
     start = state['start']
 
     if start is None:
