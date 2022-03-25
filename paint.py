@@ -12,8 +12,8 @@ def line(start, end):
        using the function goto() of turtle that move the pen between 2 coordinates.
 
     Args:
-        start (int): Coordenate (pixels) in x and y of the first tap
-        end (int): Coordenate (pixels) in x and y of the last tap
+        start (int): Coordenate (pixels) in x and y of the first tap.
+        end (int): Coordenate (pixels) in x and y of the last tap.
     """
     up()                   #Pull the pen up  - no drawing when moving
     goto(start.x, start.y) #Move the pen in order of the 2 coordinates (x, y)
@@ -24,8 +24,8 @@ def square(start, end):
     """Draw square from start to end filled.
        using the function goto() of turtle that move the pen between 2 coordinates.
     Args:
-        start (int): Coordenate (pixels) in x and y of the first tap
-        end (int): Coordenate (pixels) in x and y of the last tap
+        start (int): Coordenate (pixels) in x and y of the first tap.
+        end (int): Coordenate (pixels) in x and y of the last tap.
     """
     up()
     goto(start.x, start.y)
@@ -42,8 +42,9 @@ def circle(start, end):
     """Draw circle from start to end filled.
        using the function goto() of turtle that move the pen between 2 coordinates.
     Args:
-        start (int): Coordenate (pixels) in x and y of the first tap
-        end (int): Coordenate (pixels) in x and y of the last tap"""
+        start (int): Coordenate (pixels) in x and y of the first tap.
+        end (int): Coordenate (pixels) in x and y of the last tap.
+    """
 
     r=math.dist(start,end)
     up()
@@ -58,8 +59,8 @@ def rectangle(start, end):
     """Draw rectangle from start to end filled.
        using the function goto() of turtle that move the pen between 2 coordinates.
     Args:
-        start (int): Coordenate (pixels) in x and y of the first tap
-        end (int): Coordenate (pixels) in x and y of the last tap
+        start (int): Coordenate (pixels) in x and y of the first tap.
+        end (int): Coordenate (pixels) in x and y of the last tap.
     """
     up()
     goto(start.x, start.y)
@@ -78,8 +79,9 @@ def triangle(start, end):
     """Draw triangle from start to end filled,
        using the function goto() of turtle that move the pen between 2 coordinates.
     Args:
-        start (int): Coordenate (pixels) in x and y of the first tap
-        end (int): Coordenate (pixels) in x and y of the last tap"""
+        start (int): Coordenate (pixels) in x and y of the first tap.
+        end (int): Coordenate (pixels) in x and y of the last tap.
+    """
     up()
     goto(start.x, start.y)
     down()
@@ -101,15 +103,20 @@ def tap(x, y):
     start = state['start']
 
     if start is None:
-        state['start'] = vector(x, y)
+        state['start'] = vector(x, y) # Assign the coordinates of the tap to the variable
     else:
-        shape = state['shape']
-        end = vector(x, y)
+        shape = state['shape'] #Detect the shape to make according to the nomenclature
+        end = vector(x, y)     #Assign the coordinates of the tap to the variable
         shape(start, end)
-        state['start'] = None
+        state['start'] = None  
 
 def store(key, value):
-    "Store value in state at key."
+    """Store value in state at key.
+
+    Args:
+        key (string): Describe the thing to do.
+        value (function): Designates the type of figure according to the function.
+    """
     state[key] = value
 
 state = {'start': None, 'shape': line}
