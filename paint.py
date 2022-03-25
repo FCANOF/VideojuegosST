@@ -1,14 +1,19 @@
+""" Videogame 'PAINT' from the library 'freegames' of Python3
+    This version have been modified from the original.
+    Authors: Frida Cano Falcón & Yahir
+"""
 from turtle import *
 import turtle
 from freegames import vector
 import math
 
 def line(start, end):
-    """Draw line from start to end.
+    """Draw line from start to end,
+       using the function goto() of turtle that move the pen between 2 coordinates.
 
     Args:
-        start (_type_): _description_
-        end (_type_): _description_
+        start (int): Coordenate (pixels) in x and y of the first tap
+        end (int): Coordenate (pixels) in x and y of the last tap
     """
     up()                   #Pull the pen up  - no drawing when moving
     goto(start.x, start.y) #Move the pen in order of the 2 coordinates (x, y)
@@ -16,20 +21,29 @@ def line(start, end):
     goto(end.x, end.y)     #Move the pen in order of the 2 coordinates (x, y)
 
 def square(start, end):
-    "Draw square from start to end."
+    """Draw square from start to end filled.
+       using the function goto() of turtle that move the pen between 2 coordinates.
+    Args:
+        start (int): Coordenate (pixels) in x and y of the first tap
+        end (int): Coordenate (pixels) in x and y of the last tap
+    """
     up()
     goto(start.x, start.y)
     down()
-    begin_fill()
+    begin_fill()                 #This function is used to appoint the shape that is going to be fill
 
-    for count in range(4):
+    for count in range(4):       #Make the shape of the square : 4 lines with end.x - start.x lenght
         forward(end.x - start.x)
-        left(90)
+        left(90)                 #Angle between the lines
 
-    end_fill()
+    end_fill()                   #This function is used to close the shape that is going to be fill
 
 def circle(start, end):
-    "Draw circle from start to end."
+    """Draw circle from start to end filled.
+       using the function goto() of turtle that move the pen between 2 coordinates.
+    Args:
+        start (int): Coordenate (pixels) in x and y of the first tap
+        end (int): Coordenate (pixels) in x and y of the last tap"""
 
     r=math.dist(start,end)
     up()
@@ -41,30 +55,39 @@ def circle(start, end):
 
 
 def rectangle(start, end):
-    "Draw rectangle from start to end."
+    """Draw rectangle from start to end filled.
+       using the function goto() of turtle that move the pen between 2 coordinates.
+    Args:
+        start (int): Coordenate (pixels) in x and y of the first tap
+        end (int): Coordenate (pixels) in x and y of the last tap
+    """
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
 
-    for count in range(2):
-        forward(end.x - start.x - start.x)
-        left(90)
-        forward(end.x - start.x)
-        left(90)
+    for count in range(2):                 #Make shape of the rectangle.
+        forward(end.x - start.x - start.x) #Longest side
+        left(90)                           #Angle between the lines
+        forward(end.x - start.x)           #Shorter side
+        left(90)                           #Angle between the lines
 
     end_fill()
 
 def triangle(start, end):
-    "Draw triangle from start to end."
+    """Draw triangle from start to end filled,
+       using the function goto() of turtle that move the pen between 2 coordinates.
+    Args:
+        start (int): Coordenate (pixels) in x and y of the first tap
+        end (int): Coordenate (pixels) in x and y of the last tap"""
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
 
-    for count in range(3):
-        forward(end.x - start.x)
-        left(120)
+    for count in range(3):       #Shape of the scalene triangle: only 3 lines
+        forward(end.x - start.x) 
+        left(120)                #Angle between the lines
 
     end_fill()
 
