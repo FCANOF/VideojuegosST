@@ -117,3 +117,25 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
+"""Our new imlementation idea to add to the game is to use sound,
+    making it more enjoyable for the user. The sound will be added with 
+    the library "play sound" that can be installed using the next line 
+
+    pip install playsound 
+
+    the sound will be reproduced when the user sucesfully finds a pair 
+    (detected in code line 70) and 
+    at the end of the game when all the cards have been found (code line 75).
+
+    The general implementation will use somo of the next code
+
+    from playsound import playsound 
+    from tkinter import*
+  
+    root = Tk()  
+    root.title('GeeksforGeeks sound player')  
+    root.geometry("500x400") 
+    
+    def play(): 
+        playsound('1.mp3') 
+"""
