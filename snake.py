@@ -1,7 +1,12 @@
+""" Videogame 'SNAKE' from the library 'freegames' of Python3
+    This version have been modified from the original.
+    Authors: Frida Cano Falcón & Yahir Ulises Villa Camorlinga
+"""
 from turtle import *
 from random import randrange
 from freegames import square, vector
 
+#Principal variables of the elements of the game
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
@@ -25,8 +30,6 @@ if (valor == 4):
 if (valor == 5):
     color = "orange"
 
-
-
 while(condicion == True):
     valor2 =randrange(1,6) 
     if (valor != valor2):
@@ -48,19 +51,26 @@ if (valor2 == 5):
 
 def change(x, y):
     """Change modifies the snake´s moving direction and simultaneusly moves 
-one unit the food in an aleatory direction, this was on of the modification requirements
-"""
+       one unit the food in an aleatory direction, this was on of the modification requirements
+
+    Args:
+        x (int): Coordenate (pixels) in x of the tap.
+        y (int): Coordenate (pixels) in y of the tap.
+    """
+    #Movement of the snake - change of the coordenates
     aim.x = x
     aim.y = y
-    food_change = randrange(-2,2)
-    if food_change == -2:
-        food.y = food.y - 10
+
+    #Random movement of the food
+    food_change = randrange(-2,2) #Banner of the change of direction of the food
+    if food_change == -2:         
+        food.y = food.y - 10      #Move one step down.
     elif food_change == -1:
-        food.x = food.x - 10
+        food.x = food.x - 10      #Move one step to the left.
     elif food_change == 1:
-        food.x = food.x + 10
+        food.x = food.x + 10      #Move one step to the right.
     elif food_change == 2:
-        food.y = food.y + 10
+        food.y = food.y + 10      #Move one step up.
 
 def inside(head):
     """Returns a true boolean value while the sanke head remain within thes afe zone
@@ -72,7 +82,7 @@ def inside(head):
         boolean: To know if the snake´s head is within the boundaries of the game
     """
     
-    return -200 < head.x < 190 and -200 < head.y < 190
+    return -200 < head.x < 190 and -200 < head.y < 190 #Limits of the field
 
 def move():
     """Every .100 it forces the snake to move one unit no matter 
