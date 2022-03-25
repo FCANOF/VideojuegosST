@@ -14,7 +14,7 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
-    [vector(-180, 160), vector(10, 0)],
+    [vector(-180, 160), vector(10, 0)],  # Initial location and speed of the ghost
     [vector(-180, -160), vector(0, 10)],
     [vector(100, 160), vector(0, -10)],
     [vector(100, -160), vector(-10, 0)],
@@ -65,10 +65,10 @@ def offset(point):
     """Return offset of point in tiles.
 
     Args:
-        point (_type_): _description_
+        point (int): Coordinates of the ghost 
 
     Returns:
-        _type_: _description_
+        int: _description_
     """
     x = (floor(point.x, 20) + 200) / 20
     y = (180 - floor(point.y, 20)) / 20
@@ -79,10 +79,10 @@ def valid(point):
     """Return True if point is valid in tiles.
 
     Args:
-        point (_type_): _description_
+        point (int):  Coordinates of the ghost.
 
     Returns:
-        _type_: _description_
+        boolean: state of the element (ghost or pacman) in the world: if it face or not a tile.
     """
     index = offset(point)
 
@@ -141,8 +141,20 @@ def move():
 
     for point, course in ghosts:    #Ghost movements
         if valid(point + course):
-            point.move(course)
-        else:                       #The ghost hit a tile
+            point.move(course)                            
+            if point.x == pacman.x and point.y > pacman.y:    #Detects if the ghost is in the same direction as the pacman
+                course.y = -10
+                course.x = 0
+            elif point.x == pacman.x and point.y < pacman.y:
+                course.y = 10
+                course.x = 0
+            elif point.y == pacman.y and point.x < pacman.x:
+                course.x = 10
+                course.y = 0
+            elif point.y == pacman.y and point.x > pacman.x:
+                course.x = -10
+                course.y = 0
+        else:                                                      #The ghost hit a til
             options = [
                 vector(10, 0),
                 vector(-10, 0),
@@ -186,10 +198,10 @@ writer.color('white')
 writer.write(state['score'])
 #Movement nomenclature
 listen()
-onkey(lambda: change(5, 0), 'Right')
-onkey(lambda: change(-5, 0), 'Left')
-onkey(lambda: change(0, 5), 'Up')
-onkey(lambda: change(0, -5), 'Down')
+onkey(lambda: change(10, 0), 'Right')
+onkey(lambda: change(-10, 0), 'Left')
+onkey(lambda: change(0, 10), 'Up')
+onkey(lambda: change(0, -10), 'Down')
 #Creation of the world
 world()
 #Activate the movement of the ghosts
