@@ -4,7 +4,12 @@ from freegames import vector
 import math
 
 def line(start, end):
-    "Draw line from start to end."
+    """Draw line from start to end.
+
+    Args:
+        start (_type_): _description_
+        end (_type_): _description_
+    """
     up()                   #Pull the pen up  - no drawing when moving
     goto(start.x, start.y) #Move the pen in order of the 2 coordinates (x, y)
     down()                 #Pull the pen down - drawing when moving
@@ -37,7 +42,6 @@ def circle(start, end):
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
-    "pass  # TODO"
     up()
     goto(start.x, start.y)
     down()
@@ -53,7 +57,6 @@ def rectangle(start, end):
 
 def triangle(start, end):
     "Draw triangle from start to end."
-    "pass  # TODO"
     up()
     goto(start.x, start.y)
     down()
