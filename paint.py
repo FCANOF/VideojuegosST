@@ -46,12 +46,12 @@ def circle(start, end):
         end (int): Coordenate (pixels) in x and y of the last tap.
     """
 
-    r=math.dist(start,end)
+    r=math.dist(start,end)    #Circle radius.
     up()
     goto(start.x, start.y-r)
     down()
-    begin_fill()
-    turtle.circle(r)
+    begin_fill()              #Filled
+    turtle.circle(r)          #Turtle function that draw a circle of a r radius.
     end_fill()
 
 
@@ -118,6 +118,7 @@ def store(key, value):
         value (function): Designates the type of figure according to the function.
     """
     state[key] = value
+
 #Variables
 state = {'start': None, 'shape': line}
 #Set the size ando position of the main window in the monitor
