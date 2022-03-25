@@ -118,18 +118,23 @@ def store(key, value):
         value (function): Designates the type of figure according to the function.
     """
     state[key] = value
-
+#Variables
 state = {'start': None, 'shape': line}
+#Set the size ando position of the main window in the monitor
 setup(420, 420, 370, 0)
+#Assign the function tap to a physical mouse tap.
 onscreenclick(tap)
 listen()
+#Command of erase
 onkey(undo, 'u')
+#Pen color nomenclature
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
 onkey(lambda: color('purple'), 'P')
+#Shape nomenclature
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
