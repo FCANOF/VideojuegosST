@@ -7,7 +7,12 @@ speed = vector(0, 0)
 targets = []
 
 def tap(x, y):
-    "Respond to screen tap."
+    """Runs every time theres a click on the screen generating a ball
+
+    Args:
+        x (int): x coordinate of the ball
+        y (int): y coordinate of the ball
+    """
     if not inside(ball):
         ball.x = -199
         ball.y = -199
@@ -15,11 +20,19 @@ def tap(x, y):
         speed.y = (y + 200) / 25
 
 def inside(xy):
-    "Return True if xy within screen."
+    """To know if the coordinates are in the game boundaries
+
+    Args:
+        xy (coordinates): location of the object in the game screen (x,y)
+
+    Returns:
+        boolean: answer to the coordinates being in the game boundaries or not
+    """
     return -200 < xy.x < 200 and -200 < xy.y < 200
 
 def draw():
-    "Draw ball and targets."
+    """Re draw the ball and tarjects with ther respective size and color
+    """
     clear()
 
     for target in targets:
@@ -33,15 +46,17 @@ def draw():
     update()
 
 def move():
-    "Move ball and targets."
+    """Crete tarjets at the right side of the screen in random y location every period of time
+    """
+    #Random location and timing apearance of the tarjects
     if randrange(40) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
         targets.append(target)
-
+    #speed of tarjets
     for target in targets:
         target.x -= 0.5
-
+    #ball falling speed
     if inside(ball):
         speed.y -= 0.35
         ball.move(speed)
@@ -53,12 +68,12 @@ def move():
         if abs(target - ball) > 13:
             targets.append(target)
     draw()
-
+    # make the game infinite by repositioning the missed tarjects
     for target in targets:
         if not inside(target):
             target.x= 190
     
-
+    # time period
     ontimer(move, 20)
     return
 
