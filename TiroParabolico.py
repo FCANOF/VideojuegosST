@@ -16,8 +16,8 @@ def tap(x, y):
     """Runs every time theres a click on the screen generating a ball
 
     Args:
-        x (int): x coordinate of the ball
-        y (int): y coordinate of the ball
+        x (int): x coordinate of the ball.
+        y (int): y coordinate of the ball.
     """
     if not inside(ball):
         ball.x = -199
