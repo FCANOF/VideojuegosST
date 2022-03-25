@@ -1,7 +1,12 @@
+""" Videogame 'CANNON' from the library 'freegames' of Python3
+    This version have been modified from the original.
+    Authors: Frida Cano Falcón &  Yahir Ulises Villa Camorlinga
+"""
 from random import randrange
 from turtle import *
 from freegames import vector
 
+#Principal variables of the elements of the game
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
@@ -77,10 +82,12 @@ def move():
     ontimer(move, 20)
     return
 
+#Set the size ando position of the main window in the monitor
 setup(420, 420, 370, 0)
 hideturtle()
 up()
 tracer(False)
+#Assign the function tap to a physical mouse tap.
 onscreenclick(tap)
 move()
 done()
