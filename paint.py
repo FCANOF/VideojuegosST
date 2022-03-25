@@ -1,5 +1,6 @@
 """ Videogame 'PAINT' from the library 'freegames' of Python3
     This version have been modified from the original.
+    Simulate a notebook where you can draw different figures with different colors: line, square, circle, etc.
     Authors: Frida Cano Falcón &  Yahir Ulises Villa Camorlinga
 """
 from turtle import *

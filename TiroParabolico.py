@@ -1,5 +1,6 @@
 """ Videogame 'CANNON' from the library 'freegames' of Python3
     This version have been modified from the original.
+    Simulate a game that allows you to destroy balls with a cannon
     Authors: Frida Cano Falcón &  Yahir Ulises Villa Camorlinga
 """
 from random import randrange
@@ -51,7 +52,7 @@ def draw():
     update()
 
 def move():
-    """Crete tarjets at the right side of the screen in random y location every period of time
+    """Create tarjets at the right side of the screen in random y location every period of time
     """
     #Random location and timing apearance of the tarjects
     if randrange(40) == 0:
